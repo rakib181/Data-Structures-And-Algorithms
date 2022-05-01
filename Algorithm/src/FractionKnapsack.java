@@ -98,15 +98,12 @@ public class FractionKnapshack {
         mergesort(pAw,mid+1,e);
         merge(pAw,s,e);
     }
-    static class node implements Comparable<node>{
+    static class node{
         float p,w,profit;
         node(float _p,float _w,float pro){
             this.p=_p;
             this.w=_w;
             this.profit=pro;
-        }
-        public int compareTo(node that){
-            return (int) (this.profit-that.profit);
         }
     }
     static float Knapshack(node[] pAw,int c){
