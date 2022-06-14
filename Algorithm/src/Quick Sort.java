@@ -47,3 +47,53 @@ public class QuickSort {
          }
     }
 }
+
+
+//Randomized Algorithm
+#include<bits/stdc++.h>
+using namespace std;
+
+const int N = 105;
+int a[N];
+int n;
+
+int partition(int l,int h){
+  // Randomized Algorithms 
+  int piv=a[(rand()) % h + 1],i=l;
+  for(int j=i+1;j<=h;j++){
+    if(a[j] <= piv){
+      i++;
+      swap(a[i],a[j]);
+    }
+  }
+  if(a[l] > a[i]) swap(a[i],a[l]);
+  return i;
+}
+
+void quicksort(int l, int h){
+  if(l < h){
+  int p=partition(l,h);
+  quicksort(l,p-1);
+  quicksort(p+1,h);
+   }
+}
+
+int32_t main(){
+   ios_base::sync_with_stdio(0);
+    cin.tie(0); 
+    cout.tie(0);
+    #ifndef ONLINE_JUDGE 
+    freopen("input.txt","r",stdin); 
+    freopen("output.txt","w",stdout); 
+    #endif
+    auto start=clock();
+    cin >> n;
+    for(int i=0;i<n;i++)cin >> a[i];
+    quicksort(0,n-1);
+  for(int i=0;i<n;i++){
+    cout << a[i] << ' ';
+  }
+    cerr<<1.0 * (clock()-start)/CLOCKS_PER_SEC<<endl;
+    return 0;
+}
+
